@@ -7,8 +7,36 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+	
   <body>
+  
+	<br><br><br>
+	
+	<header class = "navbar navbar-fixed-top "
+		<div class = "container"
+		
+		<nav>
+			<ul class = "nav navbar-nav navbar-left" >
+				<% if !signed_in? %>
+					<li><%= link_to "Sign In", login_path %></li>
+				<% else %>
+					<li>Hi <%= @current_user.name %></li>
+					<li><%= link_to "Sign Out", logout_path %></li>
+				<%end%>
+				<%= link_to "Movie News", 'http://oscar.go.com/nominees' %>
+				<%= link_to "Home", root_path %>
+				<%= mail_to "adam@dit.ie", "Contact Us" %>
+			</ul>
+		</nav>
+		</div>
+	</header>
+					
     <%= yield %>
+	
+	<% flash.each do |key, value| %>
+		<div class="flash <%= key %>">
+			<%= value %>
+		</div>
+	<% end %>
   </body>
 </html>
