@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'pages/home'
+
+  get 'pages/about'
+
 	controller :sessions do
 		get 'login' => :new
 		post 'login' => :create
@@ -9,6 +13,6 @@ Rails.application.routes.draw do
   resources :users
   resources :genres
   resources :movies
-  root 'movies#index'
+  root 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
